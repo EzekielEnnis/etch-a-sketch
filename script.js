@@ -1,20 +1,27 @@
 
 const container = document.querySelector(".sketch-container");
-let currentSldrVal = 0;
+let currentSldrVal = 16;
 
+// CreateBox
+function createBox(){
+    //Calculate basis %
+    let basis = (currentSldrVal/(currentSldrVal*currentSldrVal))*100; 
+    const box = document.createElement("div");
+    box.classList.add("sketch-box");
+    // set basis dynamically when created to prevent mistakes
+    box.style.cssText = `flex-basis: ${basis}%;`;
+    return box;
+}
+
+// Create grid
 function createGrid(size){
     let gridSize = size*size;
 
-// find percentage of space the box should take up (basis)
-    let basis = (size/gridSize)*100; 
     for (let i = 0; i < gridSize; i++) {
-        const box = document.createElement("div");
-        box.classList.add("sketch-box");
-        // set basis dynamically when created to prevent mistakes
-        box.style.cssText = `flex-basis: ${basis}%;`;
-        container.appendChild(box);
+        container.appendChild(createBox());
     };
 };
+
 
 // Append box to grid
 function girdAppend(newSize) {
@@ -22,7 +29,7 @@ function girdAppend(newSize) {
     let dif = (newSize*newSize)-(currentSldrVal*currentSldrVal)
     for (let i = 0; i < dif; i++) {
         const element = array[i];
-        // Append box
+        container.appendChild()
     }
 }
 
@@ -38,8 +45,7 @@ function girdAppend(newSize) {
 
 // Load grid on start
 const body = document.querySelector("body")
-body.onload = createGrid(16)
-body.onload = () => currentSldrVal = 16;
+body.onload = createGrid(currentSldrVal)
 
 // Sketch
 let sketchBox = document.querySelectorAll(".sketch-box");
