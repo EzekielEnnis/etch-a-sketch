@@ -1,11 +1,11 @@
 
 const container = document.querySelector(".sketch-container");
-let currentSldrVal = 16;
+let currentGridWidth = 16;
 
 // CreateBox
 function createBox(){
     //Calculate basis %
-    let basis = (currentSldrVal/(currentSldrVal*currentSldrVal))*100; 
+    let basis = (currentGridWidth/(currentGridWidth*currentGridWidth))*100; 
     const box = document.createElement("div");
     box.classList.add("sketch-box");
     // set basis dynamically when created to prevent mistakes
@@ -26,7 +26,7 @@ function createGrid(size){
 // Append box to grid
 function girdAppend(newSize) {
     // How many boxes need to be added
-    let dif = (newSize*newSize)-(currentSldrVal*currentSldrVal)
+    let dif = (newSize*newSize)-(currentGridWidth*currentGridWidth)
     for (let i = 0; i < dif; i++) {
         const element = array[i];
         container.appendChild()
@@ -36,7 +36,7 @@ function girdAppend(newSize) {
 // Remove box from grid
 function girdAppend(newSize) {
     // How many boxes need to be added
-    let dif = (newSize*newSize)-(currentSldrVal*currentSldrVal)
+    let dif = (newSize*newSize)-(currentGridWidth*currentGridWidth)
     for (let i = 0; i < dif; i++) {
         const element = array[i];
         // Remove box
@@ -45,7 +45,7 @@ function girdAppend(newSize) {
 
 // Load grid on start
 const body = document.querySelector("body")
-body.onload = createGrid(currentSldrVal)
+body.onload = createGrid(currentGridWidth)
 
 // Sketch
 let sketchBox = document.querySelectorAll(".sketch-box");
@@ -71,14 +71,14 @@ function slide(){
 sliderButton.addEventListener("click", (e) => {
     let sldrVal = +slider.value;
     let textVal = +sliderText.textContent;
-    if(sldrVal === currentSldrVal) console.log("Were the same");
-    else if(sldrVal < currentSldrVal) {
-        currentSldrVal = sldrVal;
+    if(sldrVal === currentGridWidth) console.log("Were the same");
+    else if(sldrVal < currentGridWidth) {
+        currentGridWidth = sldrVal;
         console.log("Slider less than current")
         // girdRemove(newVal)
     }
-    else if(sldrVal > currentSldrVal) {
-        currentSldrVal = sldrVal;
+    else if(sldrVal > currentGridWidth) {
+        currentGridWidth = sldrVal;
         console.log("Slider greater than current")
         // girdRemove(newVal)
     };
