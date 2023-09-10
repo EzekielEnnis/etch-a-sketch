@@ -15,15 +15,23 @@
     align-items: center;
 }
 
-.sketch-container {
+#sketch-container {
     aspect-ratio: 1/1;
-    width: clamp(200px, 100%, 850px);
+    width: clamp(100px, 100%, 850px);
     flex-grow: 1;
 
     border: 2px solid black;
 
     display: flex;
     flex-wrap: wrap;
+}
+
+.sketch-box {
+    border: 1px solid black;
+}
+
+.black-clr {
+    background: black;
 }
 
 .settings {
