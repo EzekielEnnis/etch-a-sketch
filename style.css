@@ -28,6 +28,7 @@
 
 .sketch-box {
     border: 0.01em solid black;
+    flex: none;
 }
 
 .sketch {
