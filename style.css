@@ -26,15 +26,6 @@
     flex-wrap: wrap;
 }
 
-.sketch-box {
-    border: 0.01em solid black;
-    flex: none;
-}
-
-.sketch {
-    background-color: black;
-}
-
 .settings {
     align-self: flex-end;
     display: flex;
