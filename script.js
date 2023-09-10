@@ -41,7 +41,7 @@ function createGrid(size){
 function reset(){
     // Clear Grid of Sketch
     for (let i = 0; i < container.childNodes.length; i++) {
-        container.childNodes[i].className = "sketch-box"
+        container.childNodes[i].style["background-color"] = "transparent"
         
     }
 };
