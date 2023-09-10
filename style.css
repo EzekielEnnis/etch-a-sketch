@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sketch-container {
+    aspect-ratio: 1/1;
+    width: 40rem;
+    border: 2px solid black;
+    margin: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sketch-box {
+    flex-grow: 1;
+    border: 0.1rem solid black;
+}
+
+.sketch {
+    background-color: black;
+}
