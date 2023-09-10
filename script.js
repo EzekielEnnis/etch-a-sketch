@@ -11,7 +11,6 @@ function createGrid(size){
         box.style.cssText = `flex-basis: ${basis}%;`;
         container.appendChild(box);
     };
-        console.log(container.children)
 };
 
 // Load grid on start

@@ -20,8 +20,8 @@
 
 .sketch-container {
     aspect-ratio: 1/1;
-    max-height: 850px;
-    max-width: 850px;
+    width: clamp(200px, 100%, 850px);
+    flex-grow: 1;
 
     border: 2px solid black;
 
@@ -30,7 +30,6 @@
 }
 
 .sketch-box {
-    flex-grow: 1;
     border: 0.01em solid black;
 }
 
