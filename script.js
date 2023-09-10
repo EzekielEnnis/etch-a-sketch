@@ -7,6 +7,18 @@ const sliderButton = document.querySelector("#gridSize");
 const resetButton = document.querySelector("#reset");
 let currentGridWidth = +sliderText.textContent;
 
+const settings = document.querySelector(".settings")
+const colors = [
+    "black",
+    "red",
+    "orange", 
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+    "white"
+]
+
 function createBox(size){
     // Make box
     const box = document.createElement("div");
@@ -38,34 +50,55 @@ function apply(){
     let sldrVal = +slider.value;
     if(sldrVal === currentGridWidth) console.log("Were the same");
     else {
-    while (container.firstChild){
-        container.removeChild(container.firstChild)
-    }
-    createGrid(+sliderText.textContent)
-    currentGridWidth = sldrVal
+        while (container.firstChild){
+            container.removeChild(container.firstChild)
+        }
+        createGrid(+sliderText.textContent)
+        currentGridWidth = sldrVal
     };
 };
 
-// Load grid on start
-body.onload = createGrid(+sliderText.textContent)
+function createColors(){
+    colors.forEach(color => {
+        let clrBtn = document.createElement("input")
+        clrBtn.type = "radio"
+        clrBtn.name = "clrbtn"
+        clrBtn.value = color
+        clrBtn.id = color
+        if(color === "black") clrBtn.checked = "checked";
+        settings.insertBefore(clrBtn, resetButton)
+    })
+}
 
-
-
+function setColor(box){
+    let colors = document.getElementsByName("clrbtn")
+    if (box.className !== "sketch-box") return;
+    colors.forEach(color => {
+        if (color.checked) {
+            box.style["background-color"] = `${color.value}`
+            //box.style.cssText = `background-color: ${color.value};`
+        }
+    })
+}
 
 // Called when slider changes
 function slide(){
     sliderText.textContent = +slider.value
 }
 
+
+
+
 /* EVENTS */
+
+// Load grid on start
+body.onload = createGrid(+sliderText.textContent)
+body.onload = createColors()
+
 
 resetButton.addEventListener("click", () => reset())
 
 sliderButton.addEventListener("click", () => apply());
 
 // Sketch
-    container.addEventListener("mouseover", (e)=> {
-        if (e.target.className === "sketch-box") {
-            e.target.classList.add("black-clr")
-        };
-    })
+    container.addEventListener("mouseover", (e) => setColor(e.target));
