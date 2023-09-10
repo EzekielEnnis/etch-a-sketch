@@ -1,5 +1,6 @@
 
 const container = document.querySelector(".sketch-container");
+let currentSldrVal = 0;
 
 function createGrid(size){
     let gridSize = size*size;
@@ -16,9 +17,9 @@ function createGrid(size){
 };
 
 // Append box to grid
-function girdAppend(currentSize, newSize) {
+function girdAppend(newSize) {
     // How many boxes need to be added
-    let dif = (newSize*newSize)-(currentSize*currentSize)
+    let dif = (newSize*newSize)-(currentSldrVal*currentSldrVal)
     for (let i = 0; i < dif; i++) {
         const element = array[i];
         // Append box
@@ -26,9 +27,9 @@ function girdAppend(currentSize, newSize) {
 }
 
 // Remove box from grid
-function girdAppend(currentSize, newSize) {
+function girdAppend(newSize) {
     // How many boxes need to be added
-    let dif = (newSize*newSize)-(currentSize*currentSize)
+    let dif = (newSize*newSize)-(currentSldrVal*currentSldrVal)
     for (let i = 0; i < dif; i++) {
         const element = array[i];
         // Remove box
@@ -38,6 +39,7 @@ function girdAppend(currentSize, newSize) {
 // Load grid on start
 const body = document.querySelector("body")
 body.onload = createGrid(16)
+body.onload = () => currentSldrVal = 16;
 
 // Sketch
 let sketchBox = document.querySelectorAll(".sketch-box");
@@ -55,19 +57,24 @@ slider = slider.querySelector("input");
 console.log(slider)
 let sliderButton = document.querySelector("#gridSize");
 
+// Called when slider changes
+function slide(){
+    sliderText.textContent = +slider.value
+}
+
 sliderButton.addEventListener("click", (e) => {
     let sldrVal = +slider.value;
     let textVal = +sliderText.textContent;
-    if(sldrVal === textVal) console.log("Were the same");
-    else if(sldrVal < textVal) {
-        // girdRemove(currentVal, newVal)
+    if(sldrVal === currentSldrVal) console.log("Were the same");
+    else if(sldrVal < currentSldrVal) {
+        currentSldrVal = sldrVal;
         console.log("Slider less than current")
-        sliderText.textContent = sldrVal
+        // girdRemove(newVal)
     }
-    else if(sldrVal > textVal) {
-        // girdRemove(currentVal, newVal)
+    else if(sldrVal > currentSldrVal) {
+        currentSldrVal = sldrVal;
         console.log("Slider greater than current")
-        sliderText.textContent = sldrVal
+        // girdRemove(newVal)
     };
 });
 
