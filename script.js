@@ -14,8 +14,11 @@ function createGrid(size){
         console.log(container.children)
 };
 
-createGrid(15);
+// Load grid on start
+const body = document.querySelector("body")
+body.onload = createGrid(16)
 
+// Sketch
 let sketchBox = document.querySelectorAll(".sketch-box");
 sketchBox.forEach((box) => {
     box.addEventListener("mouseover", (e)=> {
