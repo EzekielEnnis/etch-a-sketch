@@ -28,6 +28,7 @@
 
 .sketch-box {
     border: 1px solid black;
+    
 }
 
 .black-clr {
@@ -63,8 +64,6 @@
 
         font-size: 20px;
         font-weight: 900;
-
-        input::radio
 
         & input {
             -webkit-appearance: none; /* Override default look */
