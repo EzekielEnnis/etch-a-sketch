@@ -8,6 +8,7 @@ const resetButton = document.querySelector("#reset");
 let currentGridWidth = +sliderText.textContent;
 
 const settings = document.querySelector(".settings")
+const allClrBtns = []
 const colors = [
     "black",
     "red",
@@ -60,25 +61,30 @@ function apply(){
 
 function createColors(){
     colors.forEach(color => {
-        let clrBtn = document.createElement("input")
-        clrBtn.type = "radio"
-        clrBtn.name = "clrbtn"
-        clrBtn.value = color
+        let clrBtn = document.createElement("button")
+        clrBtn.classList.add("clrBtn")
         clrBtn.id = color
-        if(color === "black") clrBtn.checked = "checked";
+        if(color === "black") clrBtn.classList.add("checked");
         settings.insertBefore(clrBtn, resetButton)
+        allClrBtns.push(clrBtn)
     })
 }
 
 function setColor(box){
-    let colors = document.getElementsByName("clrbtn")
+    let colors = document.querySelectorAll(".clrBtn")
     if (box.className !== "sketch-box") return;
     colors.forEach(color => {
-        if (color.checked) {
-            box.style["background-color"] = `${color.value}`
+        if (color.className.split(" ")[1] === "checked") {
+            box.style["background-color"] = `${color.id}`
             //box.style.cssText = `background-color: ${color.value};`
         }
     })
+}
+
+function changeColor(btn) {
+    let color = document.querySelector(".checked")
+    color.classList.remove("checked")
+    btn.classList.add("checked")
 }
 
 // Called when slider changes
@@ -101,4 +107,20 @@ resetButton.addEventListener("click", () => reset())
 sliderButton.addEventListener("click", () => apply());
 
 // Sketch
-    container.addEventListener("mouseover", (e) => setColor(e.target));
+container.addEventListener("mouseover", (e) => setColor(e.target));
+
+allClrBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => changeColor(e.target))
+})
+
+    /* 
+    colors.forEach(color => {
+        let clrBtn = document.createElement("input")
+        clrBtn.type = "radio"
+        clrBtn.name = "clrbtn"
+        clrBtn.value = color
+        clrBtn.id = color
+        if(color === "black") clrBtn.checked = "checked";
+        settings.insertBefore(clrBtn, resetButton)
+    })
+    */

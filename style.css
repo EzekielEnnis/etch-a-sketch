@@ -41,6 +41,19 @@
 
     padding: 8px 32px;
 
+    input::after {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
     & .slider {
         display: flex;
         align-items: center;
@@ -48,6 +61,8 @@
 
         font-size: 20px;
         font-weight: 900;
+
+        input::radio
 
         & input {
             -webkit-appearance: none; /* Override default look */
