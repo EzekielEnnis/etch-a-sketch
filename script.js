@@ -114,8 +114,19 @@ sliderButton.addEventListener("click", () => apply());
 // Sketch
 container.addEventListener("mouseover", (e) => setColor(e.target));
 
+// Change button color
 allClrBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => changeColor(e.target))
+})
+
+
+// Change boxe sizes when window resizes
+window.addEventListener("resize", () => {
+    let sketchBoxes = document.querySelectorAll(".sketch-box")
+    sketchBoxes.forEach((box) => {
+        box.style.width = `${container.clientWidth/(+sliderText.textContent)}px`
+        box.style.height = `${container.clientWidth/(+sliderText.textContent)}px`
+    })
 })
 
     /* 

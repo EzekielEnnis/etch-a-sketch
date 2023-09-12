@@ -46,6 +46,7 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        gap: 2px;
 
         & button {
             min-width: 20px;
