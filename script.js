@@ -60,14 +60,19 @@ function apply(){
 };
 
 function createColors(){
+    let btnContainer = document.createElement("div")
+    btnContainer.classList.add("clrBtnContainer")
     colors.forEach(color => {
         let clrBtn = document.createElement("button")
         clrBtn.classList.add("clrBtn")
         clrBtn.id = color
+        clrBtn.style["background-color"] = color
+        clrBtn.style["border-color"] = color
         if(color === "black") clrBtn.classList.add("checked");
-        settings.insertBefore(clrBtn, resetButton)
+        btnContainer.appendChild(clrBtn)
         allClrBtns.push(clrBtn)
     })
+    settings.insertBefore(btnContainer, resetButton)
 }
 
 function setColor(box){
